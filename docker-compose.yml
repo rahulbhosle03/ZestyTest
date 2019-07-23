@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  postgres:
+    image: mdillon/postgis:9.6
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: engineTest888
+      POSTGRES_DB: zesty
+    volumes:
+      - ./init-db/:/docker-entrypoint-initdb.d/
+      - pg-data:/var/lib/postgresql/data
+      
+  flask-service:
+    build: ./app
+    restart: always
+    volumes:
+      - ./app:/usr/src/app
+    ports:
+      - 4342:4343
+    depends_on:
+      - postgres
+
+volumes:
+  pg-data:
