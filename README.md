@@ -2,7 +2,7 @@
 
 ## Setup  
     - Download repository
-    - Add 'app' folder to same level as docker compose file.
+    - Add 'app' folder(from email) to same level as docker compose file.
     - In Terminal run docker-compose up
 
 ## API  
